@@ -11,7 +11,7 @@ def create_df(cursor):
 	data = cursor.fetchall()
 	header = [x[0] for x in cursor.description]
 	df = pd.DataFrame(data, columns=header)
-	df.drop(columns=['connection', 'connection_type', 'connection_transport', 'connection_protocol', 'connection_root', 'connection_parent', 'download'], inplace=True)
+	df.drop(columns=['connection', 'connection_type', 'connection_transport', 'connection_protocol', 'connection_root', 'connection_parent', 'download', 'remote_hostname'], inplace=True)
 	df['country'] = get_countries(df)
 	df.to_csv('dionaea.csv', index=False)
 
